@@ -1,0 +1,24 @@
+#topbar-container {
+    display: grid;
+    grid: 1fr 1fr/ 2fr 10fr 2fr;
+}
+
+#logo {
+    grid-area: 1/1/3/2;
+    width: 80%;
+    height: auto;
+    margin-top: 3vh;
+    margin-left: 2.5vw;
+
+    filter: invert(var(--filter-var));
+  }
+  
+  #nav-container {
+    grid-area: 1/2/3/-2;
+    background-color: blue;
+  }
+  
+  #cart-container {
+    grid-area: 1/-2/3/-1;
+    background-color: green;
+  }
