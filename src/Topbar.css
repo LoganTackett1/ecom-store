@@ -20,7 +20,6 @@
   
 #nav-container {
     grid-area: 1/2/3/-2;
-    background-color: blue;
 }
   
 #theme-switcher {
@@ -28,8 +27,31 @@
     align-self: center;
     justify-self: flex-start;
 
-    width: 50px;
-    height: 30px;
+    display: flex;
+    align-items: center;
+
+    width: 40px;
+    height: 17px;
+
+    border: 3px solid white;
+    border-radius: 20px;
+
+    filter: invert(var(--filter-var));
+    transition: filter 0.5s ease 0s, transform 0.3s ease 0s;
+}
+
+#theme-switcher:hover {
+    transform: scale(1.1);
+}
+
+#theme-ball {
+    width: 15px;
+    height: 15px;
+    margin: 0px 1px;
+    background-color: white;
+    border-radius: 17px;
+    transform: translateX(calc(23px * var(--filter-var)));
+    transition: transform 0.1s ease 0s;
 }
 
 #cart-container {
