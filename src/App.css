@@ -1,5 +1,6 @@
 #app-container {
-  background: var(--primary-color);
+  background: radial-gradient(at 20% 20%, var(--gradient-1) 0%, var(--gradient-2) 50%, var(--gradient-3) 100%);
+  background-position: 10% 10%;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
