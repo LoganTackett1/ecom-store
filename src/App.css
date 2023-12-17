@@ -94,3 +94,23 @@
   width: 80px;
   height: 80px;
 }
+
+.test-hidden {
+  transform: scale(0.2);
+}
+
+.test-hiding {
+  transform: scale(0.2);
+}
+
+.test-transition {
+  transition: all 200ms ease 0s;
+}
+
+.test-transform-left {
+  transform: translateX(var(--translate));
+}
+
+.test-transform-right {
+  transform: translateX(calc(-1 * var(--translate)));
+}

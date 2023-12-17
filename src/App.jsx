@@ -38,7 +38,7 @@ function App() {
       <div id="light-background" className={'theme-light' + ' ' + lightClass}></div>
       <Topbar cart={cart} changeTheme={changeTheme} theme={theme} />
       <div id="content-container">
-        <Slider num={3} prefix="test" cardWidth={80} containerWidth={360} grow={false}>
+        <Slider num={3} prefix="test" cardWidth={80} containerWidth={360} grow={true} delay={200}>
           <div id="test1"></div>
           <div id="test2"></div>
           <div id="test3"></div>
