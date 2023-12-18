@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Topbar from './Topbar'
-import Slider from './Slider';
 
 const defaultTheme = 'light';
 
