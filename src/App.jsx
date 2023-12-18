@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Topbar from './Topbar'
+import Home from './Home';
 
 const defaultTheme = 'light';
 
 function App() {
   const [theme,setTheme] = useState(defaultTheme);
   const [cart,setCart] = useState([{title:"Dark Souls",quantity:2,id:"a1b2c3"},{title:"Elden Ring",quantity:3,id:"b1b2c3"}]);
-
   function changeTheme (theme) {
     localStorage.setItem('theme',theme);
     setTheme(theme);
@@ -32,12 +32,16 @@ function App() {
   }
 
   return (
-    <div id="app-container" className={`theme-${theme}`}>
+    <>
       <div id="dark-background" className={'theme-dark' + ' ' + darkClass}></div>
       <div id="light-background" className={'theme-light' + ' ' + lightClass}></div>
       <Topbar cart={cart} changeTheme={changeTheme} theme={theme} />
-      <div id="content-container"></div>
-    </div>
+      <div id="app-container" className={`theme-${theme}`}>
+        <div id="content-container">
+          <Home></Home>
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -1,7 +1,46 @@
+import { useState, useEffect } from 'react';
 import PropTypes, { string } from 'prop-types';
 import './Topbar.css'
 
 export default function Topbar ({cart,changeTheme,theme}) {
+    const [showing,setShowing] = useState(true);
+    const [top,setTop] = useState(true);
+
+    useEffect(() => {
+        let oldScrollY = window.scrollY;
+        let lastScrollY = window.scrollY;
+
+        const func = () => {
+            if (window.scrollY > 60 && top) {
+                setTop(false);
+            } else if (window.scrollY <= 60 && !top) {
+                setTop(true);
+            }
+
+
+            if (window.scrollY >= lastScrollY+80) {
+                if (showing) {
+                    setShowing(false);
+                }
+                lastScrollY = window.scrollY;
+            } else if (window.scrollY < oldScrollY) {
+                if (!showing) {
+                    setShowing(true);
+                }
+                lastScrollY = window.scrollY;
+            }
+            
+            oldScrollY = window.scrollY;
+        }
+
+        window.addEventListener('scroll',func);
+
+        return (
+            () => {
+                window.removeEventListener('scroll',func);
+            }
+        )
+    },[showing]);
 
     function toggleTheme () {
         if (theme === "dark") {
@@ -12,7 +51,7 @@ export default function Topbar ({cart,changeTheme,theme}) {
     }
 
     return (
-        <div id='topbar-container'>
+        <div className={`theme-${theme}`+" "+(showing?"":"top-hidden") + " " + (top?"":"top-not")} id='topbar-container'>
             <img id="logo" src="../public/white.webp" onError={() => {this.onerror=null; this.src='../public/white.png'}} alt="PixelPulse Logo" />
             <div id="nav-container"></div>
             <div id="theme-switcher" onClick={toggleTheme}>
