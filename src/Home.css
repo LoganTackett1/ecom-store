@@ -5,13 +5,126 @@
 
 #header-container {
     display: grid;
-    grid: 1fr 3fr 1fr 1fr/ 1fr 1fr;
+    grid: 2fr 6fr 3fr 3fr/ 1fr 1fr;
     box-sizing: border-box;
     width: 100%;
+    height: 90vh;
+
+    color: var(--text-color);
 }
 
-#header-container > img {
+#provider-icons {
     grid-area: 1/2/-1/-1;
-    width: 100px;
-    height: 100px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 0px;
+    padding-bottom: 100%;
+    align-self: center;
+    position: relative;
+
+    display: grid;
+    grid: 1fr/1fr;
+
+    animation: 30s infinite normal rotateHex;
+    animation-timing-function: linear;
+}
+
+@keyframes rotateHex {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#provider-icons > img {
+    height: 8vw;
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+}
+
+.ps-icon {
+    height: 11vw !important;
+    transform: translateX(14vw) rotate(90deg);
+}
+
+.epic-icon {
+    height: 7.5vw !important;
+    transform: translateX(-14vw) rotate(-90deg);
+}
+
+.steam-icon {
+    transform: translateX(-7vw) translateY(-12.12vw) rotate(-30deg);
+}
+
+.switch-icon {
+    height: 7vw !important;
+    transform: translateX(7vw) translateY(-12.12vw) rotate(30deg);
+}
+
+.battle-icon {
+    height: 8.5vw !important;
+    transform: translateX(-7vw) translateY(12.12vw) rotate(30deg);
+}
+
+.xbox-icon {
+    transform: translateX(7vw) translateY(12.12vw) rotate(150deg);
+}
+
+#header-container > h1 {
+    transition: all 0.3s ease 0s;
+}
+#header-container > h1 > * {
+    transition: all 0.3s ease 0s;
+}
+#header-container > p {
+    transition: all 0.3s ease 0s;
+}
+#shop-now {
+    transition: all 0.3s ease 0s;
+}
+
+#header-container > h1 {
+    grid-area: 2/1/3/2;
+}
+
+#header-container > h1 > .one {
+    font-size: min(60px,4vw);
+    margin-left: 4vw;
+}
+
+#header-container > h1 > .two {
+    font-size: min(80px,5vw);
+}
+
+#header-container > h1 > .three {
+    font-size: min(30px,2vw);
+    margin-left: 10vw;
+}
+
+#header-container > p {
+    grid-area: 3/1/4/2;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+#shop-now {
+    grid-area: 4/1/5/2;
+    width: 250px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: transparent;
+    border: 3px solid var(--text-color);
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: bold;
+
+    align-self: flex-start;
+}
+
+#shop-now:hover {
+    background-color: var(--defining-color);
+    filter: invert(1);
 }

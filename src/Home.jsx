@@ -8,7 +8,11 @@ export default function Home () {
     return (
         <div id="home-container">
             <div id="header-container">
-                <h1>Unlock Games with Confidence - Verified Keys, Trusted Source</h1>
+                <h1>
+                    <div className='one'>Unlock Games </div>
+                    <div className='two'>with Confidence </div>
+                    <div className='three'>Verified Keys, Trusted Source</div>
+                </h1>
                 <p>
                 Welcome to Pixelpulse, where gaming meets trust. 
                 Our meticulously verified game keys ensure a secure and seamless experience. 
@@ -16,8 +20,15 @@ export default function Home () {
                 Instant delivery, encrypted transactions, and 24/7 support — we've got you covered. 
                 Shop confidently. Play immediately.
                 </p>
-                <button>Shop Now</button>
-                <img src="" alt="" />
+                <button id="shop-now">SHOP NOW</button>
+                <div id="provider-icons">
+                    <img className="steam-icon" src="../public/provider-icons/steam.png" alt="Steam Logo" />
+                    <img className="ps-icon" src="../public/provider-icons/playstation.png" alt="Playstation Logo" />
+                    <img className="switch-icon" src="../public/provider-icons/switch.png" alt="Nintendo Switch Logo" />
+                    <img className="battle-icon" src="../public/provider-icons/battlenet.png" alt="Battle.net Logo" />
+                    <img className="xbox-icon" src="../public/provider-icons/xbox.png" alt="Xbox Logo" />
+                    <img className="epic-icon" src="../public/provider-icons/epic.png" alt="Epic Games Logo" />
+                </div>
             </div>
             <h2>FEATURED & RECOMMENDED</h2>
             <Slider num={1} prefix="featured" delay={400}>

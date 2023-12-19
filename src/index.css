@@ -24,11 +24,12 @@
 }
 
 .theme-dark {
+  --defining-color: #000000;
   --primary-color: #1A1A1A;
   --gradient-1: #353535;
   --gradient-2: #1a1a1a;
   --gradient-3: #000000;
-  --text-color: #C0C0C0;
+  --text-color: #E0E0E0;
   --accent-color: #00FFFF;
   --call-to-action: #00BFFF;
   --link-color: #4169E1;
@@ -36,6 +37,7 @@
 }
 
 .theme-light {
+  --defining-color: #ffffff;
   --primary-color: #DCDCDC;
   --gradient-1: #ffffff;
   --gradient-2: #DCDCDC; 

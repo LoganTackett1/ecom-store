@@ -1,5 +1,5 @@
 #app-container {
-  z-index: -1;
+  z-index: 2;
 
   background-position: 10% 10%;
   box-sizing: border-box;
@@ -23,7 +23,7 @@
 
 #dark-background {
   position: fixed;
-  z-index: -2;
+  z-index: 1;
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
@@ -33,7 +33,7 @@
 
 #light-background {
   position: fixed;
-  z-index: -2;
+  z-index: 1;
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
