@@ -9,8 +9,8 @@ export default function Home () {
         <div id="home-container">
             <div id="header-container">
                 <h1>
-                    <div className='one'>Unlock Games </div>
-                    <div className='two'>with Confidence </div>
+                    <div className='one'><strong>Unlock</strong> Games </div>
+                    <div className='two'>with <strong>Confidence</strong> </div>
                     <div className='three'>Verified Keys, Trusted Source</div>
                 </h1>
                 <p>
