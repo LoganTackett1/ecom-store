@@ -1,7 +1,12 @@
 #home-container {
     box-sizing: border-box;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+
 
 #header-container {
     display: grid;
@@ -139,3 +144,75 @@
     background-color: var(--defining-color);
     filter: invert(1);
 }
+
+
+
+#featured-container {
+    margin-top: 30px;
+
+    box-sizing: border-box;
+    width: 75vw;
+    height: 40vw;
+    display: grid;
+    grid: 4vw 36vw/ 1fr;
+}
+
+#featured-container > h2 {
+    justify-self: flex-start;
+    color: var(--text-color);
+    transition: color 0.3s ease 0s;
+    font-size: 2vw;
+    margin-left: 10.5vw;
+}
+
+.featured-sl-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.featured-cards-container {
+    width: 60vw;
+    height: 100%;
+}
+
+.featured-sl-btn-1, .featured-sl-btn-2 {
+    width: 60px;
+    height: 80px;
+    background: none;
+    border: none;
+    opacity: 0.8;
+}
+
+.featured-card-wrapper {
+    width: 90%;
+    height: 90%;
+}
+
+#dummy-f {
+    background: blue;
+    width: 100%;
+    height: 100%;
+}
+
+.featured-0 {
+    transform: translateX(-55vw) scale(0.7);
+    opacity: 0.5;
+}
+
+.featured-1 {
+    transform: translateX(3vw);
+    opacity: 1;
+}
+
+.featured-2 {
+    transform: translateX(61vw) scale(0.7);
+    opacity: 0.5;
+}
+
+.featured-transitioning {
+    transition: transform 0.3s ease 0s, opacity 0.3s ease 0s;
+}
+
+
+

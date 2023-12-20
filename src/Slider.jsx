@@ -26,7 +26,7 @@ function mod(n, m) {
     return ((n % m) + m) % m;
   }
 
-export default function Slider ({children,num,prefix,delay}) {
+export default function Slider ({children,num,prefix,delay,btnLeft,btnRight}) {
     const [card,setCard] = useState(0);
     const [currElements,setCurrElements] = useState([]);
 
@@ -93,11 +93,11 @@ export default function Slider ({children,num,prefix,delay}) {
 
     return (
         <div id="slider-container" className={prefix+"-sl-container"}>
-            <button className={"sliderBtn" + " " + prefix+"-sl-btn"} id="leftBtn" onClick={() => {buttonClick('left')}}>{"<"}</button>
+            <button className={"sliderBtn" + " " + prefix+"-sl-btn-1"} id="leftBtn" onClick={() => {buttonClick('left')}}>{btnLeft}</button>
             <div id="cards-container" className={prefix+"-cards-container"}>
                 <CardsContainer prefix={prefix} cardsArr={currElements} key={card}/>
             </div>
-            <button className={"sliderBtn" + " " + prefix+"-sl-btn"} id="rightBtn" onClick={() => {buttonClick('right')}}>{">"}</button>
+            <button className={"sliderBtn" + " " + prefix+"-sl-btn-2"} id="rightBtn" onClick={() => {buttonClick('right')}}>{btnRight}</button>
         </div>
     );
 }
@@ -106,5 +106,7 @@ Slider.propTypes = {
     children: PropTypes.node,
     num: PropTypes.number,
     prefix: string,
-    delay: PropTypes.number
+    delay: PropTypes.number,
+    btnLeft: PropTypes.node,
+    btnRight: PropTypes.node
 }

@@ -34,6 +34,7 @@
   --call-to-action: #00BFFF;
   --link-color: #4169E1;
   --filter-var: 0;
+  --filter-var-opp: 1;
 }
 
 .theme-light {
@@ -47,6 +48,7 @@
   --call-to-action: #BA55D3;
   --link-color: #4682B4;
   --filter-var: 1;
+  --filter-var-opp: 0;
 }
 
 html, body, #root {

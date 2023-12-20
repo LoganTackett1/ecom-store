@@ -1,5 +1,6 @@
 import './Home.css';
 import Slider from './Slider';
+import SliderBtn from './SliderBtn';
 
 //featured, special offers, browse by category, top sellers
 
@@ -30,13 +31,15 @@ export default function Home () {
                     <img className="epic-icon" src="../public/provider-icons/epic.png" alt="Epic Games Logo" />
                 </div>
             </div>
-            <h2>FEATURED & RECOMMENDED</h2>
-            <Slider num={1} prefix="featured" delay={400}>
-                <div id="dummy-f">1</div>
-                <div id="dummy-f">2</div>
-                <div id="dummy-f">3</div>
-                <div id="dummy-f">4</div>
-            </Slider>
+            <div id="featured-container">
+                <h2>FEATURED & RECOMMENDED</h2>
+                <Slider num={1} prefix="featured" delay={300} btnLeft={<SliderBtn dir="left"/>} btnRight={<SliderBtn dir="right"/>}>
+                    <div id="dummy-f">1</div>
+                    <div id="dummy-f">2</div>
+                    <div id="dummy-f">3</div>
+                    <div id="dummy-f">4</div>
+                </Slider>
+            </div>
             <h2>SPECIAL OFFERS</h2>
             <Slider num={4} prefix="special" delay={200}>
                 <div id="dummy-s"></div>
