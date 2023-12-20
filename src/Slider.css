@@ -1,4 +1,4 @@
-#slider-container {
+.slider-container {
     display: flex;
     align-items: center;
 }
@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-#cards-container {
+.cards-container {
     display: flex;
     align-items: center;
     position: relative;

@@ -45,7 +45,7 @@ export default function Slider ({children,num,prefix,delay,btnLeft,btnRight}) {
     });
 
     function getCards () {
-        return [...document.getElementsByClassName("card-wrapper")];
+        return [...document.getElementsByClassName(`${prefix}-card-wrapper`)];
     }
 
     function shift (cardWrappers,dir) {
@@ -92,12 +92,12 @@ export default function Slider ({children,num,prefix,delay,btnLeft,btnRight}) {
     }
 
     return (
-        <div id="slider-container" className={prefix+"-sl-container"}>
-            <button className={"sliderBtn" + " " + prefix+"-sl-btn-1"} id="leftBtn" onClick={() => {buttonClick('left')}}>{btnLeft}</button>
-            <div id="cards-container" className={prefix+"-cards-container"}>
+        <div className={prefix+"-sl-container" + " " + "slider-container"}>
+            <button className={"sliderBtn" + " " + prefix+"-sl-btn-1"} onClick={() => {buttonClick('left')}}>{btnLeft}</button>
+            <div className={prefix+"-cards-container" + " " + "cards-container"}>
                 <CardsContainer prefix={prefix} cardsArr={currElements} key={card}/>
             </div>
-            <button className={"sliderBtn" + " " + prefix+"-sl-btn-2"} id="rightBtn" onClick={() => {buttonClick('right')}}>{btnRight}</button>
+            <button className={"sliderBtn" + " " + prefix+"-sl-btn-2"} onClick={() => {buttonClick('right')}}>{btnRight}</button>
         </div>
     );
 }

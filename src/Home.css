@@ -216,3 +216,62 @@
 
 
 
+#special-container {
+    box-sizing: border-box;
+    width: 75vw;
+    height: 26vw;
+
+    display: grid;
+    grid: 4vw 22vw / 1fr;
+}
+
+.special-sl-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.special-cards-container {
+    width: 60vw;
+    height: 100%;
+}
+
+.special-card-wrapper {
+    width: 30%;
+    height: 100%;
+}
+
+.special-sl-btn-1, .special-sl-btn-2 {
+    width: 60px;
+    height: 80px;
+    background: none;
+    border: none;
+    opacity: 0.8;
+}
+
+#dummy-s {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+}
+
+.special-0 {
+    transform: translateX(-19vw) scale(0.3);
+}
+
+.special-1 {
+    transform: translateX(2vw);
+}
+
+.special-2 {
+    transform: translateX(21vw);
+}
+
+.special-3 {
+    transform: translateX(40vw);
+}
+
+.special-4 {
+    transform: translateX(61vw) scale(0.3);
+}
+

@@ -33,21 +33,23 @@ export default function Home () {
             </div>
             <div id="featured-container">
                 <h2>FEATURED & RECOMMENDED</h2>
-                <Slider num={1} prefix="featured" delay={300} btnLeft={<SliderBtn dir="left"/>} btnRight={<SliderBtn dir="right"/>}>
+                <Slider num={1} key={0} prefix="featured" delay={300} btnLeft={<SliderBtn key={0} dir="left"/>} btnRight={<SliderBtn key={0} dir="right"/>}>
                     <div id="dummy-f">1</div>
                     <div id="dummy-f">2</div>
                     <div id="dummy-f">3</div>
                     <div id="dummy-f">4</div>
                 </Slider>
             </div>
+            <div id="special-container">
             <h2>SPECIAL OFFERS</h2>
-            <Slider num={4} prefix="special" delay={200}>
-                <div id="dummy-s"></div>
-                <div id="dummy-s"></div>
-                <div id="dummy-s"></div>
-                <div id="dummy-s"></div>
-                <div id="dummy-s"></div>
-            </Slider>
+                <Slider key={1} num={3} prefix="special" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
+                    <div id="dummy-s"></div>
+                    <div id="dummy-s"></div>
+                    <div id="dummy-s"></div>
+                    <div id="dummy-s"></div>
+                    <div id="dummy-s"></div>
+                </Slider>
+            </div>
             <h2>BROWSE BY CATEGORY</h2>
             <Slider num={5} prefix="browse-cat" delay={200}>
                 <div id="dummy-c"></div>
