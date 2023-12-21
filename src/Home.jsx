@@ -42,7 +42,7 @@ export default function Home () {
             </div>
             <div id="special-container">
             <h2>SPECIAL OFFERS</h2>
-                <Slider key={1} num={3} prefix="special" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
+                <Slider key={1} num={3} prefix="special" delay={300} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
                     <div id="dummy-s"></div>
                     <div id="dummy-s"></div>
                     <div id="dummy-s"></div>
@@ -50,14 +50,18 @@ export default function Home () {
                     <div id="dummy-s"></div>
                 </Slider>
             </div>
-            <h2>BROWSE BY CATEGORY</h2>
-            <Slider num={5} prefix="browse-cat" delay={200}>
-                <div id="dummy-c"></div>
-                <div id="dummy-c"></div>
-                <div id="dummy-c"></div>
-                <div id="dummy-c"></div>
-                <div id="dummy-c"></div>
-            </Slider>
+            <div id="browse-cat-container">
+                <h2>BROWSE BY CATEGORY</h2>
+                <Slider num={4} prefix="browse-cat" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
+                    <div id="dummy-c"></div>
+                    <div id="dummy-c"></div>
+                    <div id="dummy-c"></div>
+                    <div id="dummy-c"></div>
+                    <div id="dummy-c"></div>
+                    <div id="dummy-c"></div>
+                    <div id="dummy-c"></div>
+                </Slider>
+            </div>
             <h2>TOP SELLERS</h2>
             <Slider num={4} prefix="top-sellers" delay={200}>
                 <div id="dummy-t"></div>
