@@ -59,7 +59,7 @@
 }
 
 .f-gc-info-container > h3 {
-    font-size: 35px;
+    font-size: min(2vw,4vh);
     margin-top: 10px;
     margin-left: 10px;
     padding: 0;
@@ -79,7 +79,7 @@
 .f-gc-info-container > p {
     margin-left: 10px;
     margin-bottom: 10px;
-    font-size: 25px;
+    font-size: min(2vw,3vh);
 }
 
 .loading-div {

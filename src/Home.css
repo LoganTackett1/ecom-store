@@ -177,8 +177,8 @@
 }
 
 .featured-sl-btn-1, .featured-sl-btn-2 {
-    width: 60px;
-    height: 80px;
+    width: min(60px,6vw);
+    height: min(60px,8vw);
     background: none;
     border: none;
     opacity: 0.8;
@@ -252,8 +252,8 @@
 }
 
 .special-sl-btn-1, .special-sl-btn-2, .top-s-sl-btn-1, .top-s-sl-btn-2 {
-    width: 60px;
-    height: 80px;
+    width: min(60px,6vw);
+    height: min(60px,8vw);
     background: none;
     border: none;
     opacity: 0.8;
@@ -332,8 +332,8 @@
 }
 
 .browse-cat-sl-btn-1, .browse-cat-sl-btn-2 {
-    width: 60px;
-    height: 80px;
+    width: min(60px,6vw);
+    height: min(60px,8vw);
     background: none;
     border: none;
     opacity: 0.8;

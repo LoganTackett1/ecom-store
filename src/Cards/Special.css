@@ -30,6 +30,7 @@
     width: 100%;
     padding-left: 10px;
     justify-self: flex-end;
+    font-size: min(2.5vh,1.2vw);
 }
 
 .s-gc-content span {
