@@ -2,11 +2,12 @@ import './Home.css';
 import Slider from './Slider';
 import SliderBtn from './SliderBtn';
 import FeaturedCard from './Cards/Featured';
+import SpecialCard from './Cards/Special';
 
 //featured, special offers, browse by category, top sellers
 
 const gameObj = {};
-gameObj.price = "$29.99";
+gameObj.price = 29.99;
 gameObj.name = "Grand Theft Auto V";
 gameObj.imgs = ["https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
                 "https://media.rawg.io/media/screenshots/a7c/a7c43871a54bed6573a6a429451564ef.jpg",
@@ -53,11 +54,11 @@ export default function Home () {
             <div id="special-container">
             <h2>SPECIAL OFFERS</h2>
                 <Slider key={1} num={3} prefix="special" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
-                    <div id="dummy-s"></div>
-                    <div id="dummy-s"></div>
-                    <div id="dummy-s"></div>
-                    <div id="dummy-s"></div>
-                    <div id="dummy-s"></div>
+                    <SpecialCard game={gameObj}/>
+                    <SpecialCard game={null}/>
+                    <SpecialCard game={null}/>
+                    <SpecialCard game={null}/>
+                    <SpecialCard game={null}/>
                 </Slider>
             </div>
             <div id="browse-cat-container">

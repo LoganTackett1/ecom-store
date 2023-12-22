@@ -7,7 +7,7 @@ export default function FeaturedCard ({game}) {
     
     if (game == null) {
         return (
-            <div className="featured-loading-div">
+            <div className="loading-div">
                 <img src="./loading-spinner.gif" alt="Loading Spinner" />
             </div>
         );
@@ -27,7 +27,7 @@ export default function FeaturedCard ({game}) {
                     <img className='f-gc-img-selector g-pic-2' onMouseEnter={()=>{setImg(2)}} onMouseLeave={()=>{setImg(0)}} src={game.imgs[2]} alt={`Image selector 1 for game ${game.name}}`} />
                     <img className='f-gc-img-selector g-pic-3' onMouseEnter={()=>{setImg(3)}} onMouseLeave={()=>{setImg(0)}} src={game.imgs[3]} alt={`Image selector 1 for game ${game.name}}`} />
                     <img className='f-gc-img-selector g-pic-4' onMouseEnter={()=>{setImg(4)}} onMouseLeave={()=>{setImg(0)}} src={game.imgs[4]} alt={`Image selector 1 for game ${game.name}}`} />
-                    <p>{game.price}</p>
+                    <p>${game.price}</p>
                 </div>
             </div>
         );

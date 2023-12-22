@@ -1,0 +1,29 @@
+.special-gcard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(127, 127, 127, 0.05);
+    transition: background 0.3s ease 0s;
+}
+
+.special-gcard * {
+    color: var(--text-color);
+    transition: color 0.3s ease 0s;
+}
+
+.special-gcard img {
+    width: 100%;
+    height: auto;
+}
+
+.s-gc-content {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.s-gc-content span {
+    background-color: rgba(128, 128, 128, 0.2);
+    margin-right: 10px;
+}
