@@ -1,0 +1,33 @@
+.cat-gcard {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid: 1fr/1fr;
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: 0px 0px 7px rgb(85, 85, 85);
+}
+
+.cat-gcard img {
+    z-index: 1;
+    position: absolute;
+    width: auto;
+    height: 100%;
+    transform: translateX(-20%);
+}
+
+.cat-backdrop {
+    z-index: 2;
+    background-color: rgba(127, 127, 127, 0.6);
+}
+
+.cat-gcard h3 {
+    z-index: 3;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    color: white;
+    transition: color 0.3s ease 0s;
+}
