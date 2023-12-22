@@ -52,13 +52,13 @@ export default function Topbar ({cart,changeTheme,theme}) {
 
     return (
         <div className={`theme-${theme}`+" "+(showing?"":"top-hidden") + " " + (top?"":"top-not")} id='topbar-container'>
-            <img id="logo" src="../public/white.webp" onError={() => {this.onerror=null; this.src='../public/white.png'}} alt="PixelPulse Logo" />
+            <img id="logo" src="./white.webp" onError={() => {this.onerror=null; this.src='./white.png'}} alt="PixelPulse Logo" />
             <div id="nav-container"></div>
             <div id="theme-switcher" onClick={toggleTheme}>
                 <div id="theme-ball"></div>
             </div>
             <div id="cart-container">
-                <img id="cart-img" src="../public/cart.png" alt="Cart" />
+                <img id="cart-img" src="./cart.png" alt="Cart" />
                 {cart.length > 0 ? <div id="item-counter">{cart.length}</div> : ""}
             </div>
         </div>

@@ -25,6 +25,7 @@
 
 .theme-dark {
   --defining-color: #000000;
+  --opp-color: #ffffff;
   --primary-color: #1A1A1A;
   --gradient-1: #353535;
   --gradient-2: #1a1a1a;
@@ -39,6 +40,7 @@
 
 .theme-light {
   --defining-color: #ffffff;
+  --opp-color: #000000;
   --primary-color: #DCDCDC;
   --gradient-1: #ffffff;
   --gradient-2: #DCDCDC; 

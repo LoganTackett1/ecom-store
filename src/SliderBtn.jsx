@@ -5,7 +5,7 @@ export default function SliderBtn ({dir}) {
 
     return (
         <div className='button-content'>
-            <img className={dir == 'left' ? "button-left" : ""} src="../public/buttons/right-arrow.png" alt="Right Arrow" />
+            <img className={dir == 'left' ? "button-left" : ""} src="./buttons/right-arrow.png" alt="Right Arrow" />
         </div>
     );
 }

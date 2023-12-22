@@ -42,7 +42,7 @@ export default function Slider ({children,num,prefix,delay,btnLeft,btnRight}) {
             currArr.push(arr[mod(card+i,arr.length)]);
         }
         setCurrElements(currArr);
-    });
+    },[card,children,num]);
 
     function getCards () {
         return [...document.getElementsByClassName(`${prefix}-card-wrapper`)];

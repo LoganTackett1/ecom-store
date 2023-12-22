@@ -12,7 +12,7 @@
     display: grid;
     grid: 2fr 6fr 3fr 3fr/ 1fr 1fr;
     box-sizing: border-box;
-    width: 100%;
+    width: 81vw;
     height: 90vh;
 
     color: var(--text-color);
@@ -148,10 +148,10 @@
 
 
 #featured-container {
-    margin-top: 30px;
+    margin-top: 2vh;
 
     box-sizing: border-box;
-    width: 75vw;
+    width: 90vw;
     height: 40vw;
     display: grid;
     grid: 4vw 36vw/ 1fr;
@@ -162,7 +162,7 @@
     color: var(--text-color);
     transition: color 0.3s ease 0s;
     font-size: 2vw;
-    margin-left: 10.5vw;
+    margin-left: 7vw;
 }
 
 .featured-sl-container {
@@ -172,7 +172,7 @@
 }
 
 .featured-cards-container {
-    width: 60vw;
+    width: 80vw;
     height: 100%;
 }
 
@@ -185,8 +185,8 @@
 }
 
 .featured-card-wrapper {
-    width: 90%;
-    height: 90%;
+    width: 76vw;
+    height: 34vw;
 }
 
 #dummy-f {
@@ -196,28 +196,28 @@
 }
 
 .featured-0 {
-    transform: translateX(-55vw) scale(0.7);
+    transform: translateX(-76vw) scale(0.7);
     opacity: 0.5;
 }
 
 .featured-1 {
-    transform: translateX(3vw);
+    transform: translateX(2vw);
     opacity: 1;
 }
 
 .featured-2 {
-    transform: translateX(61vw) scale(0.7);
+    transform: translateX(80vw) scale(0.7);
     opacity: 0.5;
 }
 
 .featured-transitioning {
-    transition: transform 0.3s ease 0s, opacity 0.3s ease 0s;
+    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
 }
 
 
 
-#special-container {
-    margin-top: 20px;
+#special-container, #top-s-container {
+    margin-top: 2vh;
 
     box-sizing: border-box;
     width: 75vw;
@@ -227,29 +227,31 @@
     grid: 4vw 22vw / 1fr;
 }
 
-#special-container > h2 {
+#special-container > h2, #top-s-container > h2 {
+    justify-self: flex-start;
     color: var(--text-color);
     transition: color 0.3s ease 0s;
     margin-left: 9.5vw;
+    font-size: 2vw;
 }
 
-.special-sl-container {
+.special-sl-container, .top-s-sl-container {
     width: 100%;
     height: 100%;
     justify-content: center;
 }
 
-.special-cards-container {
+.special-cards-container, .top-s-cards-container {
     width: 60vw;
     height: 100%;
 }
 
-.special-card-wrapper {
+.special-card-wrapper, .top-s-card-wrapper {
     width: 30%;
-    height: 100%;
+    height: 20vw;
 }
 
-.special-sl-btn-1, .special-sl-btn-2 {
+.special-sl-btn-1, .special-sl-btn-2, .top-s-sl-btn-1, .top-s-sl-btn-2 {
     width: 60px;
     height: 80px;
     background: none;
@@ -257,40 +259,40 @@
     opacity: 0.8;
 }
 
-#dummy-s {
+#dummy-s, #dummy-t {
     width: 100%;
     height: 100%;
     background-color: blue;
 }
 
-.special-0 {
+.special-0, .top-s-0 {
     transform: translateX(-19vw) scale(0.3);
 }
 
-.special-1 {
+.special-1, .top-s-1 {
     transform: translateX(2vw);
 }
 
-.special-2 {
+.special-2, .top-s-2 {
     transform: translateX(21vw);
 }
 
-.special-3 {
+.special-3, .top-s-3 {
     transform: translateX(40vw);
 }
 
-.special-4 {
+.special-4, .top-s-4 {
     transform: translateX(61vw) scale(0.3);
 }
 
-.special-transitioning {
-    transition: transform 0.3s ease 0s;
+.special-transitioning, .top-s-transitioning {
+    transition: transform 0.2s ease 0s;
 }
 
 
 
 #browse-cat-container {
-    margin-top: 30px;
+    margin-top: 2vh;
 
     box-sizing: border-box;
     width: 75vw;
@@ -298,28 +300,33 @@
 
     display: grid;
     grid: 4vw 12.6vw / 1fr;
+    align-items: center;
 }
 
 #browse-cat-container > h2 {
+    justify-self: flex-start;
     color: var(--text-color);
     transition: color 0.3s ease 0s;
     margin-left: 9.5vw;
+    font-size: 2vw;
 }
 
 .browse-cat-sl-container {
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     justify-content: center;
 }
 
 .browse-cat-cards-container {
+    box-sizing: border-box;
     width: 60vw;
     height: 100%;
 }
 
 .browse-cat-card-wrapper {
-    width: 21%;
-    height: 100%;
+    width: 12.6vw;
+    height: 12.6vw;
 }
 
 .browse-cat-sl-btn-1, .browse-cat-sl-btn-2 {
@@ -361,5 +368,11 @@
 }
 
 .browse-cat-transitioning {
-    transition: transform 0.3s ease 0s;
+    transition: transform 0.2s ease 0s;
 }
+
+#top-s-container {
+    margin-bottom: 50px;
+}
+
+
