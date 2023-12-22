@@ -6,12 +6,28 @@ import SpecialCard from './Cards/Special';
 import TopCard from './Cards/Top';
 import CategoryCard from './Cards/Category';
 import { useState,useEffect } from 'react';
+import MobileSlider from './Mobile/MobileSlider';
 
 //featured, special offers, browse by category, top sellers
 
 export default function Home () {
     const [games,setGames] = useState([null]);
     const [genres,setGenres] = useState([null]);
+    const [mobile,setMobile] = useState(false);
+
+    function func () {
+        if (window.innerWidth < 1200) {
+            if (!mobile) {
+                setMobile(true);
+            }
+        } else {
+            if (mobile) {
+                setMobile(false);
+            }
+        }
+    }
+
+    func();
 
     useEffect(() => {
         const apiKey = "03a120e5221642d684ecf9e2ee2dd529";
@@ -21,6 +37,14 @@ export default function Home () {
         fetch(`https://rawg.io/api/genres?token&key=${apiKey}`,{mode: 'cors'})
         .then(result => result.json()).then(response => setGenres(response.results));
     },[]);
+
+    useEffect(() => {
+        window.addEventListener('resize', func);
+
+        return (() => {
+            window.removeEventListener('resize', func)
+        });
+    },);
 
     console.log(games);
     console.log(genres);
@@ -33,14 +57,6 @@ export default function Home () {
                     <div className='two'>with <strong>Confidence</strong> </div>
                     <div className='three'>Verified Keys, Trusted Source</div>
                 </h1>
-                <p>
-                Welcome to Pixelpulse, where gaming meets trust. 
-                Our meticulously verified game keys ensure a secure and seamless experience. 
-                In the unlikely event of a faulty key, we stand by our commitment to provide a full refund. 
-                Instant delivery, encrypted transactions, and 24/7 support — we've got you covered. 
-                Shop confidently. Play immediately.
-                </p>
-                <button id="shop-now">SHOP NOW</button>
                 <div id="provider-icons">
                     <img className="steam-icon" src="./provider-icons/steam.png" alt="Steam Logo" />
                     <img className="ps-icon" src="./provider-icons/playstation.png" alt="Playstation Logo" />
@@ -49,10 +65,20 @@ export default function Home () {
                     <img className="xbox-icon" src="./provider-icons/xbox.png" alt="Xbox Logo" />
                     <img className="epic-icon" src="./provider-icons/epic.png" alt="Epic Games Logo" />
                 </div>
+                <p>
+                Welcome to Pixelpulse, where gaming meets trust. 
+                Our meticulously verified game keys ensure a secure and seamless experience. 
+                In the unlikely event of a faulty key, we stand by our commitment to provide a full refund. 
+                Instant delivery, encrypted transactions, and 24/7 support — we've got you covered. 
+                Shop confidently. Play immediately.
+                </p>
+                <button id="shop-now">SHOP NOW</button>
             </div>
             <div id="featured-container">
                 <h2>FEATURED & RECOMMENDED</h2>
-                <Slider num={1} key={0} prefix="featured" delay={200} btnLeft={<SliderBtn key={0} dir="left"/>} btnRight={<SliderBtn key={0} dir="right"/>}>
+                {
+                mobile ? 
+                (<MobileSlider key={0} prefix="featured">
                     {
                         (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,5).map((game,index) => {
                             return (
@@ -60,7 +86,18 @@ export default function Home () {
                             )
                         })
                     }
-                </Slider>
+                </MobileSlider>)
+                : 
+                (<Slider num={1} key={0} prefix="featured" delay={200} btnLeft={<SliderBtn key={0} dir="left"/>} btnRight={<SliderBtn key={0} dir="right"/>}>
+                    {
+                        (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,5).map((game,index) => {
+                            return (
+                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                            )
+                        })
+                    }
+                </Slider>)
+                }
             </div>
             <div id="special-container">
             <h2>SPECIAL OFFERS</h2>

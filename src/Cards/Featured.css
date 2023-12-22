@@ -96,3 +96,58 @@
     filter: invert(var(--filter-var-opp));
     transition: filter 0.3s ease 0s;
 }
+
+@media screen and (max-width: 1200px) {
+    .featured-gcard {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid: 2fr 1.3fr/ 1fr;
+        background: rgba(128, 128, 128, 0.15);
+        transition: background 0.3s ease 0s;
+    
+        box-shadow: 0px 0px 7px rgb(85, 85, 85);
+    }
+
+    .f-gc-img-container {
+        background: rgba(0, 0, 0, 1);
+        grid-area: 1/1/2/-1;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+    
+        position: relative;
+    }
+
+    .f-gc-info-container {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    
+        overflow: hidden;
+    }
+
+    .f-gc-imgs-container {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .f-gc-imgs-container > img {
+        width: 20%;
+        height: auto;
+    }
+
+    .f-gc-info-container > h3 {
+        font-size: 4vw !important;
+    }
+
+    .f-gc-info-container > p {
+        font-size: 3vw !important;
+    }
+}
