@@ -10,7 +10,7 @@ import MobileSlider from './Mobile/MobileSlider';
 
 //featured, special offers, browse by category, top sellers
 
-export default function Home ({mobile}) {
+export default function GenrePage ({mobile}) {
     const [games,setGames] = useState([null]);
     const [genres,setGenres] = useState([null]);
 
@@ -75,75 +75,19 @@ export default function Home ({mobile}) {
             </div>
             <div id="special-container">
             <h2>SPECIAL OFFERS</h2>
-            {mobile ? (
-                <MobileSlider prefix="special" >
-                {
-                    (games[0] == null) ? (<SpecialCard name={null} />) : games.slice(5,13).map((game,index) => {
-                        return (
-                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
-                        )
-                    })
-                }
-            </MobileSlider>
-            ) 
-            : 
-            (
                 <Slider key={1} num={3} prefix="special" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
-                {
-                    (games[0] == null) ? (<SpecialCard name={null} />) : games.slice(5,13).map((game,index) => {
-                        return (
-                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
-                        )
-                    })
-                }
-            </Slider>
-            )}
-            </div>
-            <div id="browse-cat-container">
-                <h2>BROWSE BY CATEGORY</h2>
-                {mobile ? 
-                (
-                    <MobileSlider num={4} prefix="browse-cat" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
                     {
-                        (genres[0] == null) ? (<CategoryCard genre={null} />) : genres.map((genre,index) => {
+                        (games[0] == null) ? (<SpecialCard name={null} />) : games.slice(5,13).map((game,index) => {
                             return (
-                                <CategoryCard key={index} genre={genre.name} img={genre.image_background} />
-                            )
-                        })
-                    }
-                </MobileSlider>
-                ) 
-                : 
-                (
-                    <Slider num={4} prefix="browse-cat" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
-                    {
-                        (genres[0] == null) ? (<CategoryCard genre={null} />) : genres.map((genre,index) => {
-                            return (
-                                <CategoryCard key={index} genre={genre.name} img={genre.image_background} />
+                                <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
                             )
                         })
                     }
                 </Slider>
-                )
-                }
             </div>
             <div id="top-s-container">
                 <h2>TOP SELLERS</h2>
-                {mobile ? 
-                (
-                    <MobileSlider prefix="top-s" >
-                    {
-                        (games[0] == null) ? (<TopCard name={null} />) : games.slice(13).map((game,index) => {
-                            return (
-                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
-                            )
-                        })
-                    }
-                </MobileSlider>
-                ) 
-                : 
-                (
-                    <Slider num={3} prefix="top-s" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
+                <Slider num={3} prefix="top-s" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
                     {
                         (games[0] == null) ? (<TopCard name={null} />) : games.slice(13).map((game,index) => {
                             return (
@@ -152,8 +96,6 @@ export default function Home ({mobile}) {
                         })
                     }
                 </Slider>
-                )
-                }
             </div>
         </div>
     );

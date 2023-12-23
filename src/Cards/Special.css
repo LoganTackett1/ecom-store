@@ -5,9 +5,13 @@
     flex-direction: column;
     justify-content: flex-start;
     background: rgba(127, 127, 127, 0.15);
-    transition: background 0.3s ease 0s;
+    transition: background 0.3s ease 0s,transform 0.3s ease 0s;
 
     box-shadow: 0px 0px 7px rgb(85, 85, 85);
+}
+
+.special-gcard:hover {
+    transform: scale(1.1);
 }
 
 .special-gcard * {
@@ -36,4 +40,18 @@
 .s-gc-content span {
     background-color: rgba(128, 128, 128, 0.3);
     margin-right: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .special-gcard:hover {
+        transform: scale(1);
+    }
+
+    .s-gc-content > h3 {
+        font-size: 4vw;
+    }
+
+    .s-gc-content > h4,p {
+        font-size: 3vw;
+    }
 }
