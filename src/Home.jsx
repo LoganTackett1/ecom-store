@@ -8,6 +8,7 @@ import CategoryCard from './Cards/Category';
 import { useState,useEffect } from 'react';
 import MobileSlider from './Mobile/MobileSlider';
 import PropTypes from 'prop-types';
+import { apiKey } from './App';
 
 //featured, special offers, browse by category, top sellers
 
@@ -34,7 +35,6 @@ export default function Home ({mobile}) {
     const [genres,setGenres] = useState([null]);
 
     useEffect(() => {
-        const apiKey = "03a120e5221642d684ecf9e2ee2dd529";
 
         fetch(`https://rawg.io/api/games?token&key=${apiKey}`,{mode: 'cors'})
         .then(result => result.json()).then(response => {

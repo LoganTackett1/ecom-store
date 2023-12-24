@@ -1,4 +1,4 @@
-import PropTypes, { string } from 'prop-types';
+import { string } from 'prop-types';
 import './SliderBtn.css';
 
 export default function SliderBtn ({dir}) {

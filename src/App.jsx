@@ -6,6 +6,8 @@ import GenrePage from './GenrePage';
 
 const defaultTheme = 'light';
 
+export const apiKey = "03a120e5221642d684ecf9e2ee2dd529";
+
 function App() {
   const [theme,setTheme] = useState(defaultTheme);
   const [cart,setCart] = useState([{title:"Dark Souls",quantity:2,id:"a1b2c3"},{title:"Elden Ring",quantity:3,id:"b1b2c3"}]);
@@ -63,7 +65,7 @@ func();
       <Topbar cart={cart} changeTheme={changeTheme} theme={theme} />
       <div id="app-container" className={`theme-${theme}`}>
         <div id="content-container">
-          <Home mobile={mobile}></Home>
+          <GenrePage mobile={mobile} genre="indie"></GenrePage>
         </div>
       </div>
     </>
