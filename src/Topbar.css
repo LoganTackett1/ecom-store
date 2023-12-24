@@ -49,11 +49,13 @@
     display: flex;
     align-items: center;
 
-    width: min(40px,4vw);
-    height: min(17px,1.7vw);
+    box-sizing: content-box;
+
+    width: 2.6vw;
+    height: 1.1vw;
 
     border: 3px solid white;
-    border-radius: 20px;
+    border-radius: 1.1vw;
 
     filter: invert(var(--filter-var));
     transition: filter 0.5s ease 0s, transform 0.3s ease 0s;
@@ -64,12 +66,11 @@
 }
 
 #theme-ball {
-    width: min(15px,1.5vw);
-    height: min(15px,1.5vw);
-    margin: 0px 0.09vw;
+    width: 0.9vw;
+    height: 0.9vw;
     background-color: white;
-    border-radius: 17px;
-    transform: translateX(calc(min(23px,1.45vw) * var(--filter-var)));
+    border-radius: 0.9vw;
+    transform: translateX(calc(0.1vw + (1.5vw * var(--filter-var))));
     transition: transform 0.1s ease 0s;
 }
 

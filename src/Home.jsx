@@ -7,18 +7,54 @@ import TopCard from './Cards/Top';
 import CategoryCard from './Cards/Category';
 import { useState,useEffect } from 'react';
 import MobileSlider from './Mobile/MobileSlider';
+import PropTypes from 'prop-types';
 
 //featured, special offers, browse by category, top sellers
 
+function getPriceInfo (string) {
+    const result = [];
+    let sum = 0;
+    for (let i = 0; i < string.length; i++) {
+        sum += string.charCodeAt(i);
+    }
+    const priceArr = [14.99,29.99,39.99,59.99];
+    result[0] = priceArr[sum % 4];
+    if ((19*sum+23) % 3 == 1) {
+        result[1] = true;
+    } else {
+        result[1] = false;
+    }
+
+    return result;
+}
+
 export default function Home ({mobile}) {
     const [games,setGames] = useState([null]);
+    const [discounted,setDiscounted] = useState([null]);
     const [genres,setGenres] = useState([null]);
 
     useEffect(() => {
         const apiKey = "03a120e5221642d684ecf9e2ee2dd529";
 
         fetch(`https://rawg.io/api/games?token&key=${apiKey}`,{mode: 'cors'})
-        .then(result => result.json()).then(response => setGames(response.results));
+        .then(result => result.json()).then(response => {
+            const gameArr = [];
+            const discArr = [];
+            for (let i = 0; i < response.results.length; i++) {
+                const priceInfo = getPriceInfo(response.results[i].name);
+                console.log(priceInfo);
+                const dupe = {...response.results[i]};
+                dupe.price = priceInfo[0]
+
+                if (priceInfo[1] == true) {
+                    discArr.push(dupe);
+                } else {
+                    gameArr.push(dupe);
+                }
+            }
+            setGames(gameArr);
+            setDiscounted(discArr);
+        });
         fetch(`https://rawg.io/api/genres?token&key=${apiKey}`,{mode: 'cors'})
         .then(result => result.json()).then(response => setGenres(response.results));
     },[]);
@@ -54,9 +90,9 @@ export default function Home ({mobile}) {
                 mobile ? 
                 (<MobileSlider key={0} prefix="featured">
                     {
-                        (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,5).map((game,index) => {
+                        (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,6).map((game,index) => {
                             return (
-                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -64,9 +100,9 @@ export default function Home ({mobile}) {
                 : 
                 (<Slider num={1} key={0} prefix="featured" delay={200} btnLeft={<SliderBtn key={0} dir="left"/>} btnRight={<SliderBtn key={0} dir="right"/>}>
                     {
-                        (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,5).map((game,index) => {
+                        (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,6).map((game,index) => {
                             return (
-                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -78,9 +114,9 @@ export default function Home ({mobile}) {
             {mobile ? (
                 <MobileSlider prefix="special" >
                 {
-                    (games[0] == null) ? (<SpecialCard name={null} />) : games.slice(5,13).map((game,index) => {
+                    (discounted[0] == null) ? (<SpecialCard name={null} />) : discounted.map((game,index) => {
                         return (
-                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
                         )
                     })
                 }
@@ -90,9 +126,9 @@ export default function Home ({mobile}) {
             (
                 <Slider key={1} num={3} prefix="special" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
                 {
-                    (games[0] == null) ? (<SpecialCard name={null} />) : games.slice(5,13).map((game,index) => {
+                    (discounted[0] == null) ? (<SpecialCard name={null} />) : discounted.map((game,index) => {
                         return (
-                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
                         )
                     })
                 }
@@ -133,9 +169,9 @@ export default function Home ({mobile}) {
                 (
                     <MobileSlider prefix="top-s" >
                     {
-                        (games[0] == null) ? (<TopCard name={null} />) : games.slice(13).map((game,index) => {
+                        (games[0] == null) ? (<TopCard name={null} />) : games.slice(6).map((game,index) => {
                             return (
-                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -145,9 +181,9 @@ export default function Home ({mobile}) {
                 (
                     <Slider num={3} prefix="top-s" delay={200} btnLeft={<SliderBtn key={1} dir="left"/>} btnRight={<SliderBtn key={1} dir="right"/>}>
                     {
-                        (games[0] == null) ? (<TopCard name={null} />) : games.slice(13).map((game,index) => {
+                        (games[0] == null) ? (<TopCard name={null} />) : games.slice(6).map((game,index) => {
                             return (
-                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={29.99} />
+                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -157,4 +193,8 @@ export default function Home ({mobile}) {
             </div>
         </div>
     );
+}
+
+Home.propTypes = {
+    mobile: PropTypes.bool,
 }

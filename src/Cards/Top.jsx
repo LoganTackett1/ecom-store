@@ -1,6 +1,7 @@
 import './Top.css';
+import PropTypes, { string } from 'prop-types';
 
-export default function TopCard ({name,imgs,price}) {
+export default function TopCard ({name,imgs,price,discount}) {
 
     if (name == null) {
         return (
@@ -22,4 +23,11 @@ export default function TopCard ({name,imgs,price}) {
             </div>
         );
     }
+}
+
+TopCard.propTypes = {
+    name: string,
+    imgs: PropTypes.array,
+    price: PropTypes.number,
+    discount: PropTypes.number
 }

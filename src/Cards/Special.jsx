@@ -1,6 +1,7 @@
 import './Special.css';
+import PropTypes, { string } from 'prop-types';
 
-export default function SpecialCard ({name,imgs,price}) {
+export default function SpecialCard ({name,imgs,price,discount}) {
 
     if (name == null) {
         return (
@@ -22,4 +23,11 @@ export default function SpecialCard ({name,imgs,price}) {
             </div>
         );
     }
+}
+
+SpecialCard.propTypes = {
+    name: string,
+    imgs: PropTypes.array,
+    price: PropTypes.number,
+    discount: PropTypes.number
 }

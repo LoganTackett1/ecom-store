@@ -1,4 +1,5 @@
 import './Category.css';
+import PropTypes, { string } from 'prop-types';
 
 export default function CategoryCard ({genre,img}) {
     if (genre == null) {
@@ -16,4 +17,9 @@ export default function CategoryCard ({genre,img}) {
             </div>
         );
     }
+}
+
+CategoryCard.propTypes = {
+    genre: string,
+    img: string
 }

@@ -1,8 +1,9 @@
 import './Featured.css';
 import { useState, useEffect } from 'react';
+import PropTypes, { string } from 'prop-types';
 
 
-export default function FeaturedCard ({name,imgs,price}) {
+export default function FeaturedCard ({name,imgs,price,discount}) {
     const [img,setImg] = useState(0);
     
     if (name == null) {
@@ -34,4 +35,11 @@ export default function FeaturedCard ({name,imgs,price}) {
             </div>
         );
     }
+}
+
+FeaturedCard.propTypes = {
+    name: string,
+    imgs: PropTypes.array,
+    price: PropTypes.number,
+    discount: PropTypes.number
 }

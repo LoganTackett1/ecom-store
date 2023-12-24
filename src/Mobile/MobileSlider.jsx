@@ -27,3 +27,8 @@ export default function MobileSlider ({children,prefix}) {
         </div>
     );
 }
+
+MobileSlider.propTypes = {
+    children: PropTypes.node,
+    prefix: string,
+}
