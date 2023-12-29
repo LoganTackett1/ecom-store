@@ -1,7 +1,14 @@
 import './Special.css';
 import PropTypes, { string } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-export default function SpecialCard ({name,imgs,price,discount}) {
+export default function SpecialCard ({id,name,imgs,price}) {
+    const navigate = useNavigate();
+
+    function handleClick () {
+        window.scrollTo(0,0);
+        navigate(`/games/${id}`);
+    }
 
     if (name == null) {
         return (
@@ -12,11 +19,11 @@ export default function SpecialCard ({name,imgs,price,discount}) {
     } else {
         return (
             <div className='special-gcard'>
-                <div className='s-img-container'>
+                <div className='s-img-container pointer' onClick={handleClick}>
                     <img src={imgs[0].image} alt={`Image for ${name}`} />
                 </div>
                 <div className='s-gc-content'>
-                    <h3>{name}</h3>
+                    <h3 className="pointer" onClick={handleClick}>{name}</h3>
                     <h4>Weekend Deal</h4>
                     <p><span>-30%</span>${Math.floor(price * 70)/100}</p>
                 </div>

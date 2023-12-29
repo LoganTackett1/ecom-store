@@ -9,10 +9,11 @@ import { useState,useEffect } from 'react';
 import MobileSlider from './Mobile/MobileSlider';
 import PropTypes from 'prop-types';
 import { apiKey } from './App';
+import { useMobileState } from './main';
 
 //featured, special offers, browse by category, top sellers
 
-function getPriceInfo (string) {
+export function getPriceInfo (string) {
     const result = [];
     let sum = 0;
     for (let i = 0; i < string.length; i++) {
@@ -29,10 +30,14 @@ function getPriceInfo (string) {
     return result;
 }
 
-export default function Home ({mobile}) {
+export default function Home () {
     const [games,setGames] = useState([null]);
     const [discounted,setDiscounted] = useState([null]);
     const [genres,setGenres] = useState([null]);
+
+    console.log(genres);
+
+    const mobile = useMobileState();
 
     useEffect(() => {
 
@@ -92,7 +97,7 @@ export default function Home ({mobile}) {
                     {
                         (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,6).map((game,index) => {
                             return (
-                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
+                                <FeaturedCard key={index} name={game.name} id={game.id} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -102,7 +107,7 @@ export default function Home ({mobile}) {
                     {
                         (games[0] == null) ? (<FeaturedCard name={null} />) : games.slice(0,6).map((game,index) => {
                             return (
-                                <FeaturedCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
+                                <FeaturedCard key={index} name={game.name} id={game.id} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -116,7 +121,7 @@ export default function Home ({mobile}) {
                 {
                     (discounted[0] == null) ? (<SpecialCard name={null} />) : discounted.map((game,index) => {
                         return (
-                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
+                            <SpecialCard key={index} name={game.name} id={game.id} imgs={game.short_screenshots} price={game.price} />
                         )
                     })
                 }
@@ -128,7 +133,7 @@ export default function Home ({mobile}) {
                 {
                     (discounted[0] == null) ? (<SpecialCard name={null} />) : discounted.map((game,index) => {
                         return (
-                            <SpecialCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
+                            <SpecialCard key={index} name={game.name} id={game.id} imgs={game.short_screenshots} price={game.price} />
                         )
                     })
                 }
@@ -143,7 +148,7 @@ export default function Home ({mobile}) {
                     {
                         (genres[0] == null) ? (<CategoryCard genre={null} />) : genres.map((genre,index) => {
                             return (
-                                <CategoryCard key={index} genre={genre.name} img={genre.image_background} />
+                                <CategoryCard key={index} genre={genre.slug} img={genre.image_background} />
                             )
                         })
                     }
@@ -155,7 +160,7 @@ export default function Home ({mobile}) {
                     {
                         (genres[0] == null) ? (<CategoryCard genre={null} />) : genres.map((genre,index) => {
                             return (
-                                <CategoryCard key={index} genre={genre.name} img={genre.image_background} />
+                                <CategoryCard key={index} genre={genre.slug} img={genre.image_background} />
                             )
                         })
                     }
@@ -171,7 +176,7 @@ export default function Home ({mobile}) {
                     {
                         (games[0] == null) ? (<TopCard name={null} />) : games.slice(6).map((game,index) => {
                             return (
-                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
+                                <TopCard key={index} name={game.name} id={game.id} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }
@@ -183,7 +188,7 @@ export default function Home ({mobile}) {
                     {
                         (games[0] == null) ? (<TopCard name={null} />) : games.slice(6).map((game,index) => {
                             return (
-                                <TopCard key={index} name={game.name} imgs={game.short_screenshots} price={game.price} />
+                                <TopCard key={index} name={game.name} id={game.id} imgs={game.short_screenshots} price={game.price} />
                             )
                         })
                     }

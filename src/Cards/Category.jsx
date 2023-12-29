@@ -1,7 +1,15 @@
 import './Category.css';
-import PropTypes, { string } from 'prop-types';
+import { string } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 export default function CategoryCard ({genre,img}) {
+    const navigate = useNavigate();
+
+    function handleClick () {
+        window.scrollTo(0,0);
+        navigate(`/genre/${genre}`);
+    }
+
     if (genre == null) {
         return (
             <div className="loading-div">
@@ -10,7 +18,7 @@ export default function CategoryCard ({genre,img}) {
         );
     } else {
         return (
-            <div className='cat-gcard'>
+            <div onClick={handleClick} className='cat-gcard pointer'>
                 <img src={img} alt={`Genre card for ${genre}`} />
                 <div className='cat-backdrop'></div>
                 <h3>{genre.toUpperCase()}</h3>

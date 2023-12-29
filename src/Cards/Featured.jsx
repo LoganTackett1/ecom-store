@@ -1,11 +1,18 @@
 import './Featured.css';
 import { useState, useEffect } from 'react';
 import PropTypes, { string } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-
-export default function FeaturedCard ({name,imgs,price,discount}) {
+export default function FeaturedCard ({id,name,imgs,price,discount}) {
     const [img,setImg] = useState(0);
+
+    const navigate = useNavigate();
     
+    function handleClick () {
+        window.scrollTo(0,0);
+        navigate(`/games/${id}`,{relative:"path"});
+    }
+
     if (name == null) {
         return (
             <div className="loading-div">
@@ -15,7 +22,7 @@ export default function FeaturedCard ({name,imgs,price,discount}) {
     } else {
         return (
             <div className="featured-gcard">
-                <div className="f-gc-img-container">
+                <div onClick={handleClick} className="f-gc-img-container pointer">
                     <img src={imgs[0].image} className={img == 0 ? '' : 'g-off'} alt={`Background image for ${name}`} />
                     <img src={imgs[1].image} className={img == 1 ? '' : 'g-off'} alt={`Image 1 for ${name}`} />
                     <img src={imgs[2].image} className={img == 2 ? '' : 'g-off'} alt={`Image 2 for ${name}`} />
@@ -23,7 +30,7 @@ export default function FeaturedCard ({name,imgs,price,discount}) {
                     <img src={imgs[4].image} className={img == 4 ? '' : 'g-off'} alt={`Image 4 for ${name}`} />
                 </div>
                 <div className='f-gc-info-container'>
-                    <h3>{name}</h3>
+                    <h3 className="pointer" onClick={handleClick}>{name}</h3>
                     <div className='f-gc-imgs-container'>
                         <img className='f-gc-img-selector g-pic-1' onMouseEnter={()=>{setImg(1)}} onMouseLeave={()=>{setImg(0)}} src={imgs[1].image} alt={`Image selector 1 for game ${name}}`} />
                         <img className='f-gc-img-selector g-pic-2' onMouseEnter={()=>{setImg(2)}} onMouseLeave={()=>{setImg(0)}} src={imgs[2].image} alt={`Image selector 1 for game ${name}}`} />

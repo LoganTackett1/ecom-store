@@ -59,3 +59,11 @@ html, body, #root {
   padding: 0;
   width: 100%;
 }
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}

@@ -1,7 +1,14 @@
 import './Top.css';
 import PropTypes, { string } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-export default function TopCard ({name,imgs,price,discount}) {
+export default function TopCard ({id,name,imgs,price}) {
+    const navigate = useNavigate();
+
+    function handleClick () {
+        window.scrollTo(0,0);
+        navigate(`/games/${id}`);
+    }
 
     if (name == null) {
         return (
@@ -12,11 +19,11 @@ export default function TopCard ({name,imgs,price,discount}) {
     } else {
         return (
             <div className='top-gcard'>
-                <div className='t-img-container'>
+                <div className='t-img-container pointer' onClick={handleClick}>
                     <img src={imgs[0].image} alt={`Image for ${name}`} />
                 </div>
                 <div className='t-gc-content'>
-                    <h3>{name}</h3>
+                    <h3 className="pointer" onClick={handleClick}>{name}</h3>
                     <h4>Best Seller</h4>
                     <p>${price}</p>
                 </div>
