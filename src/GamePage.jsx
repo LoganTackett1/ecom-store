@@ -9,10 +9,11 @@ import { getPriceInfo } from './Home';
 import MobileSlider from './Mobile/MobileSlider';
 import { useMobileState } from './main';
 
-export default function GamePage () {
+export default function GamePage ({cartAdd,cartRemove,cart,itemSetAmount}) {
     const [imgs,setImgs] = useState([]);
     const [info,setInfo] = useState({name:null,details:null,price:null});
     const [loadingInfo,setLoadingInfo] = useState(true);
+    const [count,setCount] = useState(1);
 
     const mobile = useMobileState();
     const { id } = useParams();
@@ -49,6 +50,36 @@ export default function GamePage () {
     let about = ["Loading...",false];
     let price = ["Loading",false];
 
+    function handleCart () {
+        if (!loadingInfo) {
+            for (let cartItem of cart) {
+                if (cartItem.id == info.id) {
+                    itemSetAmount(cartItem.id,cartItem.count + count);
+                }
+            }
+            const item = {};
+            item.name = info.name;
+            item.id = info.id;
+            item.price_final = (price[1] ? (Math.floor(price[0] * 70)/100) : price[0]);
+            cartAdd(item);
+        }
+    }
+
+    function numChange (event) {
+        const val = event.target.value;
+        if (val.length > 0) {
+            if (isNaN(val)) {
+                setCount("");
+            } else if (val < 1) {
+                setCount(1);
+            } else {
+                setCount(val);
+            }
+        } else {
+            setCount(val);
+        }
+    }
+
     if (info.name !== null) {
         about = splitLanguages(info.description_raw);
     }
@@ -63,7 +94,8 @@ return (
         <div id="game-cta">
             {price[1] == true ? (<span>-30%</span>) : ("")}
             <p>${price[1] == true ? (Math.floor(price[0] * 70)/100) : (price[0])}</p>
-            <button>{loadingInfo ? "Loading" : "ADD TO CART"}</button>
+            <input id="game-count" type="number" value={count} onChange={numChange} />
+            <button onClick={handleCart}>{loadingInfo ? "Loading" : "ADD TO CART"}</button>
         </div>
         {mobile ? 
         (

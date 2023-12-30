@@ -157,6 +157,19 @@
     filter: invert(1);
 }
 
+#game-count {
+    margin-left: 40px;
+    width: 4vw;
+    height: 2vw;
+    padding-left: 0.4vw;
+    padding-right: 0.4vw;
+    font-size: 1.5vw;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    background: none;
+    border-radius: 2vw;
+}
+
 @media screen and (max-width: 1200px) {
     #game-page {
         padding-left: 0;
@@ -214,6 +227,7 @@
     #game-cta > button {
         width: 20vw;
         height: 10vw;
+        margin-left: 10px;
         border: 2px solid var(--text-color);
         border-radius: 5vw;
         align-self: center;
@@ -227,5 +241,18 @@
 
     #game-page > p {
         font-size: 3vw;
+    }
+
+    #game-count {
+        margin-left: 40px;
+        width: 6vw;
+        height: 5vw;
+        padding-left: 0.7vw;
+        padding-right: 0.7vw;
+        font-size: 3vw;
+        color: var(--text-color);
+        border: 1px solid var(--text-color);
+        background: none;
+        border-radius: 5vw;
     }
 }
