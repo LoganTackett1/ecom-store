@@ -60,6 +60,10 @@ html, body, #root {
   width: 100%;
 }
 
+#root {
+  position: relative;
+}
+
 .pointer:hover {
   cursor: pointer;
 }

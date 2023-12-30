@@ -54,13 +54,15 @@ export default function GamePage ({cartAdd,cartRemove,cart,itemSetAmount}) {
         if (!loadingInfo) {
             for (let cartItem of cart) {
                 if (cartItem.id == info.id) {
-                    itemSetAmount(cartItem.id,cartItem.count + count);
+                    itemSetAmount(cartItem.id,Number(cartItem.count) + Number(count));
+                    return;
                 }
             }
             const item = {};
             item.name = info.name;
             item.id = info.id;
             item.price_final = (price[1] ? (Math.floor(price[0] * 70)/100) : price[0]);
+            item.count = count;
             cartAdd(item);
         }
     }

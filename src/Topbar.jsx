@@ -3,7 +3,7 @@ import PropTypes, { string } from 'prop-types';
 import './Topbar.css'
 import { useNavigate } from 'react-router-dom';
 
-export default function Topbar ({cart,changeTheme,theme}) {
+export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
     const [showing,setShowing] = useState(true);
     const [top,setTop] = useState(true);
 
@@ -60,7 +60,7 @@ export default function Topbar ({cart,changeTheme,theme}) {
             <div id="theme-switcher" className="pointer" onClick={toggleTheme}>
                 <div id="theme-ball"></div>
             </div>
-            <div id="cart-container" className='pointer'>
+            <div id="cart-container" className='pointer' onClick={cartToggle}>
                 <img id="cart-img" src="./cart.png" alt="Cart" />
                 {cart.length > 0 ? <div id="item-counter">{cart.length}</div> : ""}
             </div>
