@@ -56,7 +56,10 @@ export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
     return (
         <div className={`theme-${theme}`+" "+(showing?"":"top-hidden") + " " + (top?"":"top-not")} id='topbar-container'>
             <img className="pointer" onClick={() => { navigate("/") }} id="logo" src="./white.webp" onError={() => {this.onerror=null; this.src='./white.png'}} alt="PixelPulse Logo" />
-            <div id="nav-container"></div>
+            <div id="nav-container">
+                <input type="text" />
+                <button>⌕</button>
+            </div>
             <div id="theme-switcher" className="pointer" onClick={toggleTheme}>
                 <div id="theme-ball"></div>
             </div>

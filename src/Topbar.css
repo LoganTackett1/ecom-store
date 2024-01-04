@@ -39,6 +39,40 @@
   
 #nav-container {
     grid-area: 1/2/3/-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav-container > input {
+    max-width: 500px;
+    width: 100%;
+    height: 30px;
+    background: rgba(127,127,127,0.05);
+    border: 2px solid var(--text-color);
+    border-radius: 30px;
+    padding-left: 10px;
+    font-size: 20px;
+    color: var(--text-color);
+
+    transition: border 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+#nav-container > button {
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--text-color);
+    border-radius: 15px;
+    background: none;
+    font-size: 20px;
+    color: var(--text-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: border 0.3s ease 0s, color 0.3s ease 0s;
 }
   
 #theme-switcher {
@@ -117,4 +151,52 @@
     font-size: 15px;
     font-weight: bold;
     color: white;
+}
+
+@media screen and (max-width: 1200px) {
+    #topbar-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #logo {
+        width: 90px;
+        height: auto;
+    }
+
+    #theme-switcher {
+        width: 30px;
+        height: 15px;
+    
+        border: 2px solid white;
+        border-radius: 18px;
+
+        flex-shrink: 0;
+    }
+
+    #theme-ball {
+        width: 13px;
+        height: 13px;
+        border-radius: 13px;
+        transform: translateX(calc(1px + (15px * var(--filter-var))));
+    }
+
+    #nav-container {
+        max-width: 50%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #cart-container {
+        width: 20px;
+        height: 20px;
+
+        flex-shrink: 0;
+
+        margin-left: 10px;
+    }
+
+    #nav-container > button {
+        flex-shrink: 0;
+    }
 }
