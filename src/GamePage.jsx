@@ -14,9 +14,30 @@ export default function GamePage ({cartAdd,cartRemove,cart,itemSetAmount}) {
     const [info,setInfo] = useState({name:null,details:null,price:null});
     const [loadingInfo,setLoadingInfo] = useState(true);
     const [count,setCount] = useState(1);
+    const [val,setVal] = useState(1);
+    const [selected,setSelected] = useState(false);
 
     const mobile = useMobileState();
     const { id } = useParams();
+
+    useEffect(() => {
+
+        const input = document.getElementById("game-count");
+
+        function handleSelect (e) {
+            if (e.target == input && !selected) {
+                setSelected(true);
+            } else if (e.target !== input && selected) {
+                setSelected(false);
+            }
+        }
+
+        window.addEventListener('click',handleSelect);
+
+        return (() => {
+            window.removeEventListener('click',handleSelect);
+        });
+    });
 
     useEffect(() => {
         fetch(`https://rawg.io/api/games/${id}/screenshots?token&key=${apiKey}`,{mode: 'cors'})
@@ -32,11 +53,14 @@ export default function GamePage ({cartAdd,cartRemove,cart,itemSetAmount}) {
         fetch(`https://rawg.io/api/games/${id}?token&key=${apiKey}`,{mode: 'cors'})
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             setInfo(result);
             setLoadingInfo(false);
         });
     },[id]);
+
+    useEffect(() => {
+        setVal(count);
+    },[selected]);
 
     function splitLanguages (text) {
         for (let i = 0; i < text.length-7; i++) {
@@ -71,14 +95,18 @@ export default function GamePage ({cartAdd,cartRemove,cart,itemSetAmount}) {
         const val = event.target.value;
         if (val.length > 0) {
             if (isNaN(val)) {
-                setCount("");
+                setCount(1);
+                setVal(val);
             } else if (val < 1) {
                 setCount(1);
+                setVal(1);
             } else {
                 setCount(val);
+                setVal(val);
             }
         } else {
-            setCount(val);
+            setVal(val);
+            setCount(1);
         }
     }
 
@@ -96,7 +124,7 @@ return (
         <div id="game-cta">
             {price[1] == true ? (<span>-30%</span>) : ("")}
             <p>${price[1] == true ? (Math.floor(price[0] * 70)/100) : (price[0])}</p>
-            <input id="game-count" type="number" value={count} onChange={numChange} />
+            <input value={val} id="game-count" type="number" onChange={numChange} />
             <button onClick={handleCart}>{loadingInfo ? "Loading" : "ADD TO CART"}</button>
         </div>
         {mobile ? 

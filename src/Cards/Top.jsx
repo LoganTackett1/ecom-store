@@ -20,7 +20,7 @@ export default function TopCard ({id,name,imgs,price}) {
         return (
             <div className='top-gcard'>
                 <div className='t-img-container pointer' onClick={handleClick}>
-                    <img src={imgs[0].image} alt={`Image for ${name}`} />
+                    <img src={(imgs.length > 0) ? imgs[0].image : ""} alt={`Image for ${name}`} />
                 </div>
                 <div className='t-gc-content'>
                     <h3 className="pointer" onClick={handleClick}>{name}</h3>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './CartBar.css';
 import CartItem from './CartItem';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartBar ({cart,cartRemove,itemSetAmount,cartOn,theme,cartToggle}) {
     let total = 0;
@@ -8,6 +9,12 @@ export default function CartBar ({cart,cartRemove,itemSetAmount,cartOn,theme,car
         total += item.price_final * item.count;
     }
     total = Math.floor(total*100)/100;
+
+    const navigate = useNavigate();
+
+    function handleCheckout () {
+        navigate('/checkout/');
+    }
 
     return (
         <div id="cart-side-bar" className={(cartOn ? "cart-showing" : "") + " " + `theme-${theme}`}>
@@ -24,7 +31,7 @@ export default function CartBar ({cart,cartRemove,itemSetAmount,cartOn,theme,car
             </div>
             <div id="cart-sb-footer">
                 <h3>${total}</h3>
-                <button>Check Out</button>
+                <button onClick={handleCheckout}>Check Out</button>
             </div>
         </div>
     );

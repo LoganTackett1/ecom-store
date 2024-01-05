@@ -1,0 +1,15 @@
+#checkout {
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: color 0.3s ease 0s;
+}
+
+#checkout > p {
+    width: 80%;
+    font-size: max(3vw,5vh);
+    text-align: center;
+}

@@ -89,7 +89,6 @@ function App({children}) {
 
     if (localStorage.getItem('cart')) {
       const cartString = localStorage.getItem('cart');
-      console.log(cartString);
       setCart(JSON.parse(cartString));
     }
   },[]);
@@ -113,6 +112,9 @@ function App({children}) {
       <div id="app-container" className={`theme-${theme}`}>
         <div id="content-container">
           {renderChildren()}
+        </div>
+        <div id="footer">
+          @RAWG API Game Database
         </div>
       </div>
     </>

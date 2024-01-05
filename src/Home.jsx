@@ -10,6 +10,7 @@ import MobileSlider from './Mobile/MobileSlider';
 import PropTypes from 'prop-types';
 import { apiKey } from './App';
 import { useMobileState } from './main';
+import { useNavigate } from 'react-router-dom';
 
 //featured, special offers, browse by category, top sellers
 
@@ -35,9 +36,8 @@ export default function Home () {
     const [discounted,setDiscounted] = useState([null]);
     const [genres,setGenres] = useState([null]);
 
-    console.log(genres);
-
     const mobile = useMobileState();
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -47,7 +47,6 @@ export default function Home () {
             const discArr = [];
             for (let i = 0; i < response.results.length; i++) {
                 const priceInfo = getPriceInfo(response.results[i].name);
-                console.log(priceInfo);
                 const dupe = {...response.results[i]};
                 dupe.price = priceInfo[0]
 
@@ -87,7 +86,7 @@ export default function Home () {
                 Instant delivery, encrypted transactions, and 24/7 support — we've got you covered. 
                 Shop confidently. Play immediately.
                 </p>
-                <button id="shop-now">SHOP NOW</button>
+                <button id="shop-now" onClick={() => navigate("/search/")}>SHOP NOW</button>
             </div>
             <div id="featured-container">
                 <h2>FEATURED & RECOMMENDED</h2>

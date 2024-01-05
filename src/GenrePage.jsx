@@ -37,7 +37,6 @@ export default function GenrePage () {
             const discArr = [];
             for (let i = 0; i < response.results.length; i++) {
                 const priceInfo = getPriceInfo(response.results[i].name);
-                console.log(priceInfo);
                 const dupe = {...response.results[i]};
                 dupe.price = priceInfo[0]
 

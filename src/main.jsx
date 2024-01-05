@@ -7,6 +7,8 @@ import './index.css'
 import Home from './Home.jsx';
 import GenrePage from './GenrePage.jsx';
 import GamePage from './GamePage.jsx';
+import SearchPage from './SearchPage.jsx';
+import Checkout from './Checkout.jsx';
 
 export function useMobileState () {
   const [mobile,setMobile] = useState(false);
@@ -46,6 +48,18 @@ const router = createBrowserRouter([
   {
     path: 'games/:id',
     element: <App><GamePage /></App>
+  },
+  {
+    path: 'search/',
+    element: <App><SearchPage /></App>
+  },
+  {
+    path: 'search/:search',
+    element: <App><SearchPage /></App>
+  },
+  {
+    path: '/checkout/',
+    element: <App><Checkout></Checkout></App>
   }
 ]);
 

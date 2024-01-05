@@ -3,11 +3,8 @@ import './CardsContainer.css';
 
 export default function CardsContainer ({prefix,cardsArr}) {
 
-    console.log(cardsArr);
-
     function generateCardElements () {
         return cardsArr.map((element,index) => {
-            console.log(index);
             let classname = prefix+"-"+index;
 
             return (

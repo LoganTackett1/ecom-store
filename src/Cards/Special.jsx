@@ -20,7 +20,7 @@ export default function SpecialCard ({id,name,imgs,price}) {
         return (
             <div className='special-gcard'>
                 <div className='s-img-container pointer' onClick={handleClick}>
-                    <img src={imgs[0].image} alt={`Image for ${name}`} />
+                    <img src={(imgs.length > 0) ? imgs[0].image : ""} alt={`Image for ${name}`} />
                 </div>
                 <div className='s-gc-content'>
                     <h3 className="pointer" onClick={handleClick}>{name}</h3>

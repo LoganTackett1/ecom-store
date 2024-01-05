@@ -6,8 +6,42 @@ import { useNavigate } from 'react-router-dom';
 export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
     const [showing,setShowing] = useState(true);
     const [top,setTop] = useState(true);
+    const [selected,setSelected] = useState(false);
+    const [val,setVal] = useState("");
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const searchBar = document.getElementById("search-bar");
+
+        function funcTopBar (e) {
+            if (e.target == searchBar) {
+                if (selected == false) {
+                    setSelected(true);
+                }
+            } else {
+                if (selected == true) {
+                    setSelected(false);
+                }
+            }
+        }
+
+        function keyDown (e) {
+            if (e.keyCode == 13 && selected) {
+                navigate(`/search/${val}`);
+            }
+        }
+
+        window.addEventListener('keydown', keyDown);
+        window.addEventListener('click', funcTopBar);
+
+        return (
+            () => {
+                window.removeEventListener('click', funcTopBar);
+                window.removeEventListener('keydown',keyDown);
+            }
+        );
+    },);
 
     useEffect(() => {
         let oldScrollY = window.scrollY;
@@ -53,12 +87,20 @@ export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
         }
     }
 
+    function searchChange (e) {
+        setVal(e.target.value);
+    }
+
+    function handleSearch() {
+        navigate(`/search/${val}`);
+    }
+
     return (
         <div className={`theme-${theme}`+" "+(showing?"":"top-hidden") + " " + (top?"":"top-not")} id='topbar-container'>
             <img className="pointer" onClick={() => { navigate("/") }} id="logo" src="./white.webp" onError={() => {this.onerror=null; this.src='./white.png'}} alt="PixelPulse Logo" />
             <div id="nav-container">
-                <input type="text" />
-                <button>⌕</button>
+                <input value={val} onChange={searchChange} id="search-bar" type="text" />
+                <button onClick={handleSearch}>⌕</button>
             </div>
             <div id="theme-switcher" className="pointer" onClick={toggleTheme}>
                 <div id="theme-ball"></div>
@@ -74,5 +116,6 @@ export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
 Topbar.propTypes = {
     cart: PropTypes.array,
     changeTheme: PropTypes.func,
-    theme: string
+    theme: string,
+    cartToggle: PropTypes.func
 };
