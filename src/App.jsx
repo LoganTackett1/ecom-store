@@ -67,10 +67,12 @@ function App({children}) {
 
       function cartStart (e) {
         const rect = cartElement.getBoundingClientRect();
-        const touch = e.originalEvent.touches[0];
+        console.log(rect);
+        const touch = e.touches[0];
+        console.log(touch);
 
-        if (!coordInBox(touch.pageX,touch.pageY,rect.left,rect.right,rect.top,rect.buttom) && cartOn) {
-          setCartOn(false);
+        if (!coordInBox(touch.pageX,touch.pageY,rect.left,rect.right,rect.top,rect.bottom) && cartOn) {
+          setTimeout(()=>{setCartOn(false)},100);
         }
       }
 
@@ -177,7 +179,7 @@ function App({children}) {
     <>
       <div id="dark-background" className={'theme-dark' + ' ' + darkClass}></div>
       <div id="light-background" className={'theme-light' + ' ' + lightClass}></div>
-      <Topbar cart={cart} changeTheme={changeTheme} cartToggle={cartToggle} theme={theme} />
+      <Topbar cartOn={cartOn} cart={cart} changeTheme={changeTheme} cartToggle={cartToggle} theme={theme} />
       <CartBar setFunc={setCartOn} theme={theme} cartToggle={cartToggle} cartOn={cartOn} cart={cart} cartRemove={cartRemove} itemSetAmount={itemSetAmount} />
       <div id="app-container" className={`theme-${theme}`}>
         <div id="content-container">

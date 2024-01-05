@@ -3,7 +3,7 @@ import PropTypes, { string } from 'prop-types';
 import './Topbar.css'
 import { useNavigate } from 'react-router-dom';
 
-export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
+export default function Topbar ({cartOn,cart,changeTheme,theme,cartToggle}) {
     const [showing,setShowing] = useState(true);
     const [top,setTop] = useState(true);
     const [selected,setSelected] = useState(false);
@@ -96,9 +96,11 @@ export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
     }
 
     function handleCart () {
-        setTimeout(() => {
-            cartToggle();
-        },100);
+        if (!cartOn) {
+            setTimeout(() => {
+                cartToggle();
+            },100);
+        }
     }
 
     return (
