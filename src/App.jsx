@@ -48,6 +48,7 @@ function App({children}) {
   });
   
   useEffect(() => {
+      const cartElement = document.getElementById("cart-side-bar");
 
       function cartClick () {
           if (cartOn == true && over == false) {
@@ -55,10 +56,35 @@ function App({children}) {
           } 
       }
 
-      window.addEventListener('click',cartClick);
+      function coordInBox(x0,y0,x1,x2,y1,y2) {
+        if (x1 <= x0 && x0 <= x2) {
+          if (y1 <= y0 && y0 <= y2) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function cartStart (e) {
+        const rect = cartElement.getBoundingClientRect();
+        const touch = e.originalEvent.touches[0];
+
+        if (!coordInBox(touch.pageX,touch.pageY,rect.left,rect.right,rect.top,rect.buttom) && cartOn) {
+          setCartOn(false);
+        }
+      }
+
+      if (mobile) {
+        window.addEventListener('touchstart',cartStart);
+      } else {
+        window.addEventListener('click',cartClick);
+      }
 
       return (
-          () => {window.removeEventListener('click',cartClick);}
+          () => {
+            window.removeEventListener('click',cartClick);
+            window.removeEventListener('touchstart',cartStart);
+          }
       );
   });
 
