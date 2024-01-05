@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import './CartBar.css';
 import CartItem from './CartItem';
 import { useNavigate } from 'react-router-dom';
 
-export default function CartBar ({cart,cartRemove,itemSetAmount,cartOn,theme,cartToggle}) {
+export default function CartBar ({setFunc,cart,cartRemove,itemSetAmount,cartOn,theme,cartToggle}) {
+
     let total = 0;
     for (let item of cart) {
         total += item.price_final * item.count;

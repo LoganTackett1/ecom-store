@@ -16,7 +16,51 @@ function App({children}) {
   const [theme,setTheme] = useState(defaultTheme);
   const [cart,setCart] = useState([]);
   const [cartOn,setCartOn] = useState(false);
+  const [over,setOver] = useState(false);
   const mobile = useMobileState();
+
+  console.log(over);
+
+  useEffect(() => {
+      const cartElement = document.getElementById("cart-side-bar");
+
+      function enterFunc () {
+          if (!over) {
+              setOver(true);
+          }
+      }
+
+      function leaveFunc () {
+          if (over) {
+              setOver(false);
+          }
+      }
+
+      cartElement.addEventListener('mouseenter',enterFunc);
+      cartElement.addEventListener('mouseleave',leaveFunc);
+
+      return (
+          () => {
+              cartElement.removeEventListener('mouseover',enterFunc);
+              cartElement.removeEventListener('mouseleave',leaveFunc);
+          }
+      );
+  });
+  
+  useEffect(() => {
+
+      function cartClick () {
+          if (cartOn == true && over == false) {
+            setCartOn(false);
+          } 
+      }
+
+      window.addEventListener('click',cartClick);
+
+      return (
+          () => {window.removeEventListener('click',cartClick);}
+      );
+  });
 
   function setLocalCart (obj) {
     localStorage.setItem('cart',`${JSON.stringify(obj)}`);
@@ -108,7 +152,7 @@ function App({children}) {
       <div id="dark-background" className={'theme-dark' + ' ' + darkClass}></div>
       <div id="light-background" className={'theme-light' + ' ' + lightClass}></div>
       <Topbar cart={cart} changeTheme={changeTheme} cartToggle={cartToggle} theme={theme} />
-      <CartBar theme={theme} cartToggle={cartToggle} cartOn={cartOn} cart={cart} cartRemove={cartRemove} itemSetAmount={itemSetAmount} />
+      <CartBar setFunc={setCartOn} theme={theme} cartToggle={cartToggle} cartOn={cartOn} cart={cart} cartRemove={cartRemove} itemSetAmount={itemSetAmount} />
       <div id="app-container" className={`theme-${theme}`}>
         <div id="content-container">
           {renderChildren()}

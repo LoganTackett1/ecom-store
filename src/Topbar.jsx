@@ -95,6 +95,12 @@ export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
         navigate(`/search/${val}`);
     }
 
+    function handleCart () {
+        setTimeout(() => {
+            cartToggle();
+        },100);
+    }
+
     return (
         <div className={`theme-${theme}`+" "+(showing?"":"top-hidden") + " " + (top?"":"top-not")} id='topbar-container'>
             <img className="pointer" onClick={() => { navigate("/") }} id="logo" src="./white.webp" onError={() => {this.onerror=null; this.src='./white.png'}} alt="PixelPulse Logo" />
@@ -105,7 +111,7 @@ export default function Topbar ({cart,changeTheme,theme,cartToggle}) {
             <div id="theme-switcher" className="pointer" onClick={toggleTheme}>
                 <div id="theme-ball"></div>
             </div>
-            <div id="cart-container" className='pointer' onClick={cartToggle}>
+            <div id="cart-container" className='pointer' onClick={handleCart}>
                 <img id="cart-img" src="./cart.png" alt="Cart" />
                 {cart.length > 0 ? <div id="item-counter">{cart.length}</div> : ""}
             </div>
