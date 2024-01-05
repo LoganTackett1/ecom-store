@@ -26,7 +26,7 @@ export default function CartBar ({setFunc,cart,cartRemove,itemSetAmount,cartOn,t
             <div id="cart-items">
                 {cart.map((item,i) => {
                     return (
-                        <CartItem key={i} item={item} cartRemove={cartRemove} itemSetAmount={itemSetAmount} />
+                        <CartItem key={i} item={item} count={item.count} cartRemove={cartRemove} itemSetAmount={itemSetAmount} />
                     )
                 })}
             </div>

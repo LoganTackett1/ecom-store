@@ -2,7 +2,7 @@ import './CartItem.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function CartItem ({item,cartRemove,itemSetAmount}) {
+export default function CartItem ({item,cartRemove,itemSetAmount,count}) {
     const [val,setVal] = useState(item.count);
     const [on,setOn] = useState(false);
     const navigate = useNavigate();
@@ -10,6 +10,10 @@ export default function CartItem ({item,cartRemove,itemSetAmount}) {
     function handleChange (e) {
         setVal(e.target.value);
     }
+
+    useEffect(() => {
+        setVal(count);
+    },[count]);
 
     useEffect(() => {
         const inp = document.getElementById(`inp-${item.id}`);
